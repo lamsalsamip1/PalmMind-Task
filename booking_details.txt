@@ -1,0 +1,8 @@
+{'destination': 'Langtang', 'date': 'next monday', 'name': 'Samip', 'email': 'lamsalsamiP@outlook.com', 'phone': '9741826751'}
+{'destination': 'ABC', 'date': 'next monday', 'name': 'Ramesh Silwal', 'email': 'rameshsilwal@gmail.com', 'phone': '9860886775'}
+{'destination': 'Shey Phoksundo', 'date': 'January 5 2025', 'name': 'John Cena', 'email': 'johncena@gmail.com', 'phone': '1234567891'}
+{'destination': 'Langtang', 'date': 'next sunday', 'name': 'Suresh', 'email': 'suresh@gmail.com', 'phone': '1234569819'}
+{'destination': 'Ama Yangri', 'date': 'next friday', 'name': 'Harry Kane', 'email': 'harry123@yahoo.com', 'phone': '1239875673'}
+{'destination': 'ABC', 'date': 'this friday', 'name': 'Prabin Sharma', 'email': 'prabin12@gmail.com', 'phone': '9871237654'}
+{'destination': 'Langtang', 'date': '21 feb 2025', 'name': 'Satish', 'email': 'satish12@gmail.com', 'phone': '1239875559'}
+{'destination': 'Langtang', 'date': 'first february 2025', 'name': 'ronak', 'email': 'ronak12@outlook.com', 'phone': '8887776665'}

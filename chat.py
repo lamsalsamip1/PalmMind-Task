@@ -7,7 +7,7 @@ from langchain_chroma import Chroma
 from langchain_core.messages import HumanMessage, AIMessage
 from validate import validate_date, validate_email
 from langchain.tools import tool
-from langchain.agents import AgentExecutor, create_tool_calling_agent
+from langchain.agents import AgentExecutor, create_tool_calling_agent, initialize_agent
 
 
 # Set the API key
@@ -62,7 +62,7 @@ rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chai
 @tool
 def booking_tool() -> str:
     """
-    This tool books a trekking package. It asks the user for all the information and validates it.
+    This tool books a trekking package when user wants to make any kind of booking. It asks the user for all the information and validates it.
     If the booking is successful, it returns 'Booking successful'. If the booking fails, it returns 'Booking failed'.
     """
     booking_details = {}
@@ -78,7 +78,7 @@ def booking_tool() -> str:
     while True:
         trekking_date = input("Please enter the date of your trek (YYYY-MM-DD): ")
         if validate_date(trekking_date):
-            booking_details['date'] = trekking_date
+            booking_details['date'] = validate_date(trekking_date)
             break
         else:
             print("Invalid date format. Please enter a valid date.")
@@ -123,30 +123,31 @@ tools = [
 #Define agent prompt
 agent_prompt = ChatPromptTemplate.from_messages(
     [
-        ("system", "You are a smart assistant capable of answering questions related to trekking and managing bookings. If the user wants any information about trekking, invoke the rag_chain_tool to answer it. If the user wants to book a trek or a trip or anything, invoke the booking_tool. You must invoke one of the tools."),
+        ("system", (
+            "You are a smart assistant capable of answering questions related to trekking and managing bookings. "
+            "You must always invoke one of the available tools: "
+            "- Use the `rag_chain_tool` for providing information or answering questions related to trekking.\n"
+            "- Use the `booking_tool` for handling bookings, reservations, or inquiries about booking a trek, trip, or related activities.\n"
+            "The only exception is when the user's input is a simple greeting (e.g., 'hi', 'hello', 'hey'), in which case you can respond directly without using a tool. "
+            "For all other inputs, invoking a tool is mandatory. Avoid providing standalone answers without a tool."
+        )),
         MessagesPlaceholder("chat_history"),
         ("human", "{input}"),
         MessagesPlaceholder("agent_scratchpad"),
     ]
 )
-# agent_prompt = ChatPromptTemplate.from_messages(
-#     [
-#         ("system", "You are a helpful assistant that manages trekking bookings and can answer questions about trekking. You will always either provide an answer from the RAG system or initiate the booking process."),
-#         MessagesPlaceholder("chat_history"),
-#         ("human", "{input}"),
-#         MessagesPlaceholder("agent_scratchpad")
-#     ]
-# )
 
 # Create agent
 agent = create_tool_calling_agent(llm, tools, agent_prompt)
 agent_executor = AgentExecutor(agent=agent, tools=tools)
 
 # Chat interface
+MAX_CHAT_HISTORY_LENGTH=5
 chat_history = []
 while True:
     user_input = input("You: ")
     response = agent_executor.invoke({"input": user_input, "chat_history": chat_history})
+
     print("Bot:", response['output'])
 
     # Update chat history only if the booking tool wasn't invoked
@@ -154,6 +155,9 @@ while True:
         chat_history.append(HumanMessage(content=user_input))
         chat_history.append(AIMessage(content=response['output']))
     else :
-        #Tool invoking was having problems after invoking a booking once. So, clearing the chat history after a successful booking.
         chat_history.clear()  
+    
+    # Keep chat history length in check
+    if len(chat_history) > MAX_CHAT_HISTORY_LENGTH:
+        chat_history = chat_history[-MAX_CHAT_HISTORY_LENGTH:]
    

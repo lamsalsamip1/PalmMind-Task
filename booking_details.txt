@@ -1,11 +1,1 @@
-{'destination': 'Langtang', 'date': 'next monday', 'name': 'Samip', 'email': 'lamsalsamiP@outlook.com', 'phone': '9741826751'}
-{'destination': 'ABC', 'date': 'next monday', 'name': 'Ramesh Silwal', 'email': 'rameshsilwal@gmail.com', 'phone': '9860886775'}
-{'destination': 'Shey Phoksundo', 'date': 'January 5 2025', 'name': 'John Cena', 'email': 'johncena@gmail.com', 'phone': '1234567891'}
-{'destination': 'Langtang', 'date': 'next sunday', 'name': 'Suresh', 'email': 'suresh@gmail.com', 'phone': '1234569819'}
-{'destination': 'Ama Yangri', 'date': 'next friday', 'name': 'Harry Kane', 'email': 'harry123@yahoo.com', 'phone': '1239875673'}
-{'destination': 'ABC', 'date': 'this friday', 'name': 'Prabin Sharma', 'email': 'prabin12@gmail.com', 'phone': '9871237654'}
-{'destination': 'Langtang', 'date': '21 feb 2025', 'name': 'Satish', 'email': 'satish12@gmail.com', 'phone': '1239875559'}
-{'destination': 'Langtang', 'date': 'first february 2025', 'name': 'ronak', 'email': 'ronak12@outlook.com', 'phone': '8887776665'}
-{'destination': 'Langtang', 'date': '2025-01-06', 'name': 'Rakesh Katuwal', 'email': 'rakesh12@gmail.com', 'phone': '9995557772'}
-{'destination': 'ABC', 'date': '2025-01-04', 'name': 'Mikel Arteta', 'email': 'mikel123@yahoo.com', 'phone': '8884445551'}
-{'destination': 'Ama Yangri', 'date': '2025-01-12', 'name': 'Rohit Paudel', 'email': 'rohit123@gmail.com', 'phone': '8887776664'}
+{'destination': 'ABC', 'date': '2025-01-12', 'name': 'Samip lamsal', 'email': 'lamsalsamip@jvvv.com', 'phone': '9998887776'}

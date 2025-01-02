@@ -68,15 +68,14 @@ def booking_tool() -> str:
     booking_details = {}
 
     # Ask for trekking destination
-    trekking_destination = input("""
-                                 Please enter your trekking destination: 
-                                 Available destinations: Langtang, ABC, Ama Yangri, Shey Phoksundo
-                                 """)
+    print("That's great! Let's get started with your booking.\n")
+
+    trekking_destination =input("""Please tell me which one of the following destinations you would like to trek to:\nAvailable destinations: Langtang, ABC, Ama Yangri, Shey Phoksundo\nYour choice:""")
     booking_details['destination'] = trekking_destination
 
     # Ask for date and validate format
     while True:
-        trekking_date = input("Please enter the date of your trek (YYYY-MM-DD): ")
+        trekking_date = input("\nWhen would you like to start the trek? Please enter the date (e.g., 'tomorrow', 'next week', '2023-12-31'): ")
         if validate_date(trekking_date):
             booking_details['date'] = validate_date(trekking_date)
             break
@@ -84,11 +83,11 @@ def booking_tool() -> str:
             print("Invalid date format. Please enter a valid date.")
 
     # Ask for name
-    booking_details['name'] = input("Please enter your name: ")
+    booking_details['name'] = input("\nPlease tell me your name: ")
 
     # Ask for email and validate
     while True:
-        email = input("Please enter your email address: ")
+        email = input("\nGreat, now please enter your email address: ")
         if validate_email(email):
             booking_details['email'] = email
             break
@@ -97,7 +96,7 @@ def booking_tool() -> str:
 
     # Ask for phone number
     while True:
-        phone = input("Please enter your phone number: ")
+        phone = input("\nPlease enter your phone number: ")
         if phone.isdigit() and len(phone) == 10:
             booking_details['phone'] = phone
             break

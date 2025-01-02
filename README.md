@@ -7,7 +7,7 @@
 2. Install the dependencies.
    ``` pip install -r requirements.txt ```
 3. Recreate the vector database.
-   ``` python -m creaet_db.py```
+   ``` python -m create_db.py```
 4. Run chat.py to chat from the terminal
    ``` python -m chat.py```
 

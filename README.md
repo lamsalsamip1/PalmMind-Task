@@ -11,4 +11,4 @@
 4. Run chat.py to chat from the terminal
    ``` python -m chat.py```
 
-Bookings are stored in booking.txt file.
+Bookings are stored in booking_details.txt file.
